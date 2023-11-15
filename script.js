@@ -3,36 +3,50 @@ function generatePackingList() {
     const climat = document.getElementById("climat").value;
     const itemsList = document.getElementById("itemsList");
     const packingList = document.getElementById("packingList");
-    const errorMessage = document.getElementById('error-message');
+    const errorMessage = document.getElementById("error-message");
 
     itemsList.innerHTML = "";
-    errorMessage.innerHTML = '';
-     errorMessage.classList.add('hidden');
+    errorMessage.innerHTML = "";
+    errorMessage.classList.add("hidden");
 
     if (nbNuit <= 0) {
         alert("Le nombre de nuits doit être strictement supérieur à 0.");
         return;
     }
 
-    const socks = Math.min(nbNuit, 10);
-    const underwear = Math.min(nbNuit, 10);
+    errorMessage.textContent =
+        "Cette liste n'inclut pas ce que vous allez mettre sur vous le jour J.";
+    errorMessage.classList.remove("hidden");
+
+    const chaussettes = Math.min(nbNuit, 10);
+    const ssvêtements = Math.min(nbNuit, 10);
     const tShirts = Math.min(nbNuit, 10);
     const pulls = nbNuit < 4 ? 1 : nbNuit <= 6 ? 2 : 3;
     const pants = nbNuit < 4 ? 1 : nbNuit <= 6 ? 2 : 3;
-    const shoes = nbNuit > 6 ? 1 : 0;
 
     addCheckboxToList(itemsList, `Un sac à dos/valise`);
-    addCheckboxToList(itemsList, `Nombre de paires de chaussettes : ${socks}`);
-    addCheckboxToList(itemsList, `Nombre de sous-vêtements : ${underwear}`);
+    addCheckboxToList(
+        itemsList,
+        `Nombre de paires de chaussettes : ${chaussettes}`
+    );
+    addCheckboxToList(itemsList, `Nombre de sous-vêtements : ${ssvêtements}`);
     addCheckboxToList(itemsList, `Nombre de t-shirts : ${tShirts}`);
     addCheckboxToList(itemsList, `Nombre de pulls/sweats : ${pulls}`);
     addCheckboxToList(itemsList, `Nombre de pantalons : ${pants}`);
-    addCheckboxToList(itemsList, `Une veste`);
+    addCheckboxToList(itemsList, `Brosse à dents`);
+    addCheckboxToList(itemsList, `Dentifrice`);
+    addCheckboxToList(
+        itemsList,
+        `passeport,ordinateur portable+ portable + chargeur et housse, `
+    );
+
     if (climat === "chaud") {
         itemsList.removeChild(itemsList.lastChild);
         addCheckboxToList(itemsList, `Tongs/claquettes`);
+        addCheckboxToList(itemsList, `Crème solaire`);
     } else if (climat === "froid") {
         addCheckboxToList(itemsList, `Gants et bonnets`);
+        addCheckboxToList(itemsList, `Une veste`);
     }
     if (nbNuit > 10) {
         alert(
@@ -84,6 +98,6 @@ function checkAllChecked() {
     );
 
     if (allChecked) {
-        alert("Bravo bon voyage !");
+        alert("Bravo bon voyage !🧳✈️👏👏");
     }
 }
