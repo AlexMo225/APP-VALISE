@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+        <title>Valise-JS</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>DANS MA SHORT VALISE GROOOOOO 🧳✈️</h1>
+            <form id="packingForm">
+                <label for="nbNuit">Nombre de nuits :</label>
+                <input type="number" id="nbNuit" name="nbNuit" min="1" required>
+
+                <label for="climat">Climat :</label>
+                <select id="climat" name="climat" required>
+                    <option value="modere">Modéré</option>
+                    <option value="chaud">Chaud 🥵</option>
+                    <option value="froid">Froid 🥶</option>
+                </select>
+
+                <button type="button" onclick="generatePackingList()">Générer la
+                    liste</button>
+            </form>
+
+            <div id="packingList" class="hidden">
+                <h2>Votre Packing List :</h2>
+                <div id="error-message" class="hidden"></div>
+                <ul id="itemsList"></ul>
+                <button onclick="resetForm()">Recommencer</button>
+            </div>
+
+        </div>
+
+        <script src="script.js" defer></script>
+    </body>
+</html>
