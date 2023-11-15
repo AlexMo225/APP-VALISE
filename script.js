@@ -1,5 +1,5 @@
 function generatePackingList() {
-    const nbNuit = parseInt(document.getElementById("nbNuit").value);
+    const nbNuit = parseInt(document.getElementById("nbNuit").value.trim());
     const climat = document.getElementById("climat").value;
     const itemsList = document.getElementById("itemsList");
     const packingList = document.getElementById("packingList");
@@ -17,6 +17,15 @@ function generatePackingList() {
     errorMessage.textContent =
         "Cette liste n'inclut pas ce que vous allez mettre sur vous le jour J.";
     errorMessage.classList.remove("hidden");
+
+
+    const nbNuitInt = parseInt(nbNuit);
+
+    if (isNaN(nbNuitInt) || nbNuitInt <= 0) {
+        errorMessage.textContent = 'Veuillez entrez le nombre de nuit svp 😡';
+        errorMessage.classList.remove('hidden');
+        return;
+      }
 
     const chaussettes = Math.min(nbNuit, 10);
     const ssvêtements = Math.min(nbNuit, 10);
